@@ -5,34 +5,34 @@ using namespace std;
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
+#define sq(x) (x) * (x)
+#define PI acos(-1.0)
+#define all(x) x.begin(), x.end()
 #define mod 1000000007
 typedef long long int ll;
 typedef unsigned long long int llu;
-
+#define pb push_back
+#define pop pop_back()
+#define len(a) sizeof(a)
+#define lc (n * 2)
+#define rc ((n * 2) + 1)
 int main()
 {
-    string s;
-    cin >> s;
-    int len = s.size();
-    int c = 0, k = -1;
-    for (int i = 0; i < len; i++)
+    faster;
+    ll n;
+    cin >> n;
+    while (n > 1)
     {
-        if (s[i] == s[i + 1])
+        cout << n << " ";
+        if (n % 2 == 0)
         {
-            c++;
+            n /= 2;
         }
         else
         {
-            c += 1;
-            if (c > k)
-            {
-                k = c;
-            }
-            c = 0;
+            n = n * 3 + 1;
         }
     }
-    if (c != 0)
-        cout << c + 1 << endl;
-    else
-        cout << k << endl;
+    cout << n << endl;
+    return 0;
 }
