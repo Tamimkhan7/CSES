@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-int N=1e7+7;
+const int N = 2e5+7;
 int sb[N];
 int main()
 {
@@ -10,23 +10,28 @@ int main()
     int a[n+1];
     for(int i=1; i<=n; i++)cin>>a[i];
     ll sum=0;
-    a[0]=0;//first index insert the value 0
+    sb[0]=0;//first index insert the value 0
     for(int i=1; i<=n; i++)
     {
-        sb[i]= a[i]+a[i-1];//use prefix sum
+        sb[i]= a[i]+sb[i-1];//use prefix sum
     }
     int ct=0;
-   for(int i=1; i<=n; i++)cout<<a[i]<<" ";
-    cout<<endl;
-
-
-    for(int i=1; i<=n; i++)
+    int r=n, l=r-1;
+    while(l>=0 && r>=0)
     {
-        int res = a[i]-a[i-1];
-        if(res==x)
+        if(l==0)r--,l=r-1;
+        if(sb[r]==x)
         {
             ct++;
-        }else if(a[i]==x)ct++;
+            // cout<<sb[r]<<" ";
+        }
+        if((sb[r]-sb[l])==x)
+        {
+            ct++;
+            //cout<<(sb[r]-sb[l])<<" ";
+        }
+        l--;
     }
+    //  cout<<endl;
     cout<<ct<<endl;
 }
