@@ -1,38 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
-const long long MOD = 1000000007; // 10^9 + 7
+#define MTK                       \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
+#define mem(a, b) memset(a, b, sizeof(a))
+#define trace(x) cout << #x << ' ' << x << endl
+#define all(x) (x).begin(), (x).end()
+#define ll int long long
+#define mod 1000000007
 
-// Function to calculate the sum of divisors of a number
-long long sumOfDivisors(long long n)
+ll f(ll n)
 {
-    long long sum = 0;
-    for (long long i = 1; i * i <= n; i++)
+    ll ans = 0;
+    for (ll i = 1; i * i <= n; i++)
     {
         if (n % i == 0)
         {
-            sum = (sum + i) % MOD;
+            ans += i;
             if (i != n / i)
-            {
-                sum = (sum + n / i) % MOD;
-            }
+                ans += (n / i);
+            // cout << ans << '\n';
         }
     }
-    return sum;
+
+    return ans;
 }
 
 int main()
 {
-    long long n;
+    ll n;
     cin >> n;
-
-    long long result = 0;
-    for (long long i = 1; i <= n; i++)
-    {
-        result = (result + sumOfDivisors(i)) % MOD;
-    }
-
-    cout << result << endl;
+    ll ans = 0;
+    for (int i = 1; i <= n; i++)
+        ans = ans + (f(i)) % mod;
+    cout << ans << '\n';
 
     return 0;
 }
-// code ta bujte hobe, problem code both ai bujte hobe
