@@ -1,0 +1,1 @@
+{"name":"Local: Permutations","url":"/home/tamim/Desktop/CSES/Permutations.cpp","tests":[{"id":1719382601696,"input":"5","output":""},{"id":1719382621822,"input":"3","output":"NO SOLUTION"},{"id":1719382714623,"input":"4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tamim/Desktop/CSES/Permutations.cpp","group":"local","local":true}
