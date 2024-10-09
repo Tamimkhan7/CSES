@@ -18,27 +18,11 @@ int32_t main()
     int n = s.size();
     int m = ss.size();
     int cnt = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n - m + 1; i++)
     {
-        int p = 0;
-        for (int j = 0; j < m; j++)
-        {
-            if (s[i] == ss[j])
-            {
-                p++;
-                // cout << s[i] << ' ' << ss[j] << '\n';
-                if (j < m - 1)
-                    i++;
-            }
-            else if (s[i] != ss[j])
-                break;
-            // cout << p << '\n';
-            if (p == m)
-                cnt++;
-
-            // else
-            //     break;
-        }
+        string ans = s.substr(i, m);
+        if (ans == ss)
+            cnt++;
     }
     cout << cnt << '\n';
     return 0;
