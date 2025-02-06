@@ -5,28 +5,57 @@ using namespace std;
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
-typedef long long int ll;
-#define all(x) x.begin(), x.end()
-#define mod 1000000007
-
+#define show(x) cout << #x << ' ' << x << endl
+#define all(x) (x).begin(), (x).end()
 int32_t main()
 {
     MTK;
     int n, x;
     cin >> n >> x;
-    int a[n + 1];
-    for (int i = 1; i <= n; i++)
-        cin >> a[i];
+    vector<int> v(n);
     map<int, int> mp;
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
-        if (mp.find(x - a[i]) != mp.end())
-        {
-            cout << mp[x - a[i]] << ' ' << i << '\n';
-            return 0;
-        }
-        mp[a[i]] = i;
-        // cout << mp[i] << ' ';
+        cin >> v[i];
+        mp[v[i]]++;
     }
-    cout << "IMPOSSIBLE" << '\n';
+    int res, index = -1;
+    for (int i = 0; i < n; i++)
+    {
+        int val = x - v[i];
+        if (mp.find(val) != mp.end())
+        {
+            // show(val), show(v[i]);
+            if (val == v[i] and mp[val] > 1)
+            {
+                res = val;
+                index = i;
+                // show(index);
+                // show(val), show(v[i]);
+                break;
+            }
+            else if (val != v[i])
+            {
+                res = val;
+                index = i;
+                // show(index);
+                // show(val), show(v[i]);
+                break;
+            }
+        }
+        //  mp[val]++;
+    }
+    if (index != -1)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (v[i] == res and (index != i))
+            {
+                cout << index + 1 << ' ' << i + 1 << '\n';
+                return 0;
+            }
+        }
+    }
+    else
+        cout << "IMPOSSIBLE" << '\n';
 }
